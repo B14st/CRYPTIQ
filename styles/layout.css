@@ -1,0 +1,257 @@
+.terminal-container {
+    display: flex; flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    position: relative;
+    flex-direction: row;
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.sidebar {
+    width: clamp(200px, 20vw, 300px);
+    padding: clamp(10px, 2vw, 20px);
+    border-right: 1px solid rgba(0, 255, 65, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.collapsed {
+    display: none;
+}
+
+.sidebar-toggle {
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #00ff41;
+}
+
+.main-terminal {
+    flex: 1;
+    padding-bottom: 70px; 
+    padding: clamp(12px, 2vw, 25px);
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  padding: 20px;
+  border-bottom: 2px solid rgba(0, 255, 65, 0.3);
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+
+.terminal-container {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+/*Grid Overlay === */
+.grid-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+        linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.intel-header {
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    font-size: clamp(11px, 1.3vw, 13px);
+    margin-bottom: 6px;
+}
+
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: rgb(38, 38, 38);
+  border-top: 1px solid rgba(0, 255, 65, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-family: monospace;
+  z-index: 9999;
+}
+
+/* Left section: Launcher + tool buttons */
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tool-launcher {
+  position: relative;
+  background: #000;
+  color: #00ff41;
+  border: 1px solid #00ff41;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.tool-launcher:hover {
+  background-color: rgba(0, 255, 65, 0.2);
+}
+
+.tool-menu {
+  position: absolute;
+  bottom: 110%; /* above the launcher */
+  left: 0;
+  background: #0a0a0a;
+  border: 1px solid #00ff41;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,255,65,0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  min-width: 120px;
+}
+
+.tool-menu.hidden {
+  display: none;
+}
+
+.tool-item {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: monospace;
+}
+
+.tool-item:hover {
+  background-color: rgba(0, 255, 65, 0.2);
+}
+
+
+.taskbar-buttons button {
+  background: #121212fe;
+  color: rgb(52, 255, 34);
+  font-weight: bold;
+  font-family: monospace;
+  border: none;
+  margin-right: 3px;
+  height: 40px;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+/* Right section: CLI and clock */
+.taskbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.taskbar-cli {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* New unified input wrapper */
+.cli-wrapper {
+  display: flex;
+  align-items: center;
+  background: #000;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-family: monospace;
+  height: 35px;
+}
+
+.cli-prefix {
+  color: #00ff41;
+  font-size: 15px;
+  white-space: nowrap;
+  margin-right: 6px;
+}
+
+/* This replaces your old .taskbar-cli input style */
+.cli-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00ff41;
+  font-family: monospace;
+  font-size: 18px!important;
+  width: 190px;
+}
+
+/* Optional: remove any accidental borders still applied elsewhere */
+.taskbar-cli input {
+  all: unset;
+}
+
+/* Toggle Button */
+#toggle-cli-output {
+  background: transparent;
+  border: none;
+  color: #00ff41;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+
+.taskbar-cli-output {
+  position: fixed;
+  bottom: 50px; /* above the taskbar */
+  right: 0px;
+  width: 450px;
+  min-height: 100px;
+  max-height: 100px;
+  background: #000;
+  color: #00ff41;
+  font-family: monospace;
+  font-size: 16px;
+  border: 1px solid rgba(0, 255, 65, 0.4);
+  border-radius: 4px;
+  padding: 10px;
+  overflow-y: auto;
+  z-index: 10000;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.taskbar-cli-output.hidden {
+  display: none;
+}
+
+#taskbar-clock {
+  font-size: 13px;
+  color: #99ffcc;
+}
+
+
+
+

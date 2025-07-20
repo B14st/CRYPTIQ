@@ -1,0 +1,45 @@
+.command-line {
+  background: #000;
+  border-top: 1px solid rgba(0, 255, 65, 0.4);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.blinking-cursor {
+    animation: blink 1s infinite;
+    color: #00ff41;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.7);   
+}
+
+/*CLI */
+.cli {
+  background-color: #000;
+  color: #00ff41;
+  font-family: monospace;
+  font-size: 15px;
+  padding: 12px;
+  border-radius: 5px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px #00ff41;
+  overflow: hidden;
+}
+
+.cli-output {
+  flex-grow: 1;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  padding: 8px;
+  margin-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.cli-output::-webkit-scrollbar {
+  display: none;
+}
+
+.cli-line.output {
+  color: #00ff41;
+}

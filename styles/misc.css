@@ -1,0 +1,13 @@
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.feedback-line {
+  font-size: clamp(11px, 1.3vw, 13px);
+  margin-top: 10px;
+}
+
+.prompt {
+  margin-right: 6px;
+}

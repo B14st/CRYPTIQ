@@ -1,0 +1,37 @@
+@import url("base.css");
+@import url("layout.css");
+@import url("cli.css");
+@import url("intel.css");
+@import url("tools.css");
+@import url("modals.css");
+@import url("theme.css");
+@import url("misc.css");
+
+/* Base scrollbar styling (WebKit only) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 65, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 65, 0.4);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.main-section {
+  display: block; /* or flex/grid depending on layout */
+}
+
+
