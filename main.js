@@ -1,6 +1,12 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
+// ✅ Enable auto-reload during dev
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+  awaitWriteFinish: true,
+});
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 1280,
