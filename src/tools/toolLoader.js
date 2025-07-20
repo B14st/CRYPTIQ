@@ -13,7 +13,7 @@ export function registerTool(name, loaderFn) {
 /**
  * Launches a tool by name.
  */
-export async function launchTool(name) {
+export async function launchTool(name, arg = undefined) {
   const loader = toolRegistry.get(name);
   if (!loader) {
     console.warn(`Tool '${name}' not registered.`);
@@ -21,9 +21,9 @@ export async function launchTool(name) {
   }
 
   try {
-    const mod = await loader();
+    const mod = await loader(arg); // ✅ Pass arg to the tool
     if (mod && typeof mod.init === 'function') {
-      mod.init();
+      mod.init(arg);               // ✅ Optional: pass to init if needed
     } else {
       console.warn(`Tool '${name}' loaded but has no init()`);
     }
@@ -31,4 +31,10 @@ export async function launchTool(name) {
     console.error(`Failed to launch tool '${name}':`, err);
   }
 }
+
+
+
+
+
+
 

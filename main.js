@@ -1,28 +1,34 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
-// ✅ Enable auto-reload during dev
-require('electron-reload')(__dirname, {
-  electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
-  awaitWriteFinish: true,
-});
-
 function createWindow() {
-  const win = new BrowserWindow({
+  const mainWindow = new BrowserWindow({
     width: 1280,
     height: 800,
     webPreferences: {
-      contextIsolation: false, // Optional: Set to true and use preload if you want sandboxing
-    },
+      contextIsolation: true,
+      nodeIntegration: false,
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
 
-  win.loadFile('public/index.html');
+  mainWindow.loadFile('public/index.html');
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+
+  // ✅ You can place this here safely
+  ipcMain.on('hello', (event, message) => {
+    console.log('Main received:', message);
+    event.sender.send('hello', 'pong!');
+  });
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
-
-//test//

@@ -3,6 +3,11 @@ import '../tools/index.js';
 
 
 
+window.electronAPI.send('hello', 'from renderer');
+window.electronAPI.receive('hello', (msg) => {
+  console.log('Got message from main:', msg);
+});
+
 
 
 // Sidebar Toggle Logic

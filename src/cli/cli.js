@@ -87,7 +87,7 @@ function executeCommand(input) {
 
   if (!match) return `❌ Encrypted file '${filename}' not found.`;
 
-  launchTool('decryptiontool', {
+  launchTool('decryption', {
     filename: match.content.filename,
     type: match.content.encryption_type,
     data: match.content.data,

@@ -80,7 +80,10 @@ function openDecryptionTool(arg) {
 }
 
 // ✅ Correct registration
-registerTool('decryption', openDecryptionTool);
+registerTool('decryption', (arg) => {
+  openDecryptionTool(arg);
+});
+
 
 export function init() {
   openDecryptionTool({
@@ -90,3 +93,5 @@ export function init() {
     displayName: 'Example'
   });
 }
+
+
